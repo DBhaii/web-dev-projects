@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="calc.css">
+  <title>my calc  </title>
+</head>
+<body>
+  <div id="calculator">
+    <input type="text" id="display" readonly>
+    <div class="button-click">
+
+      <button style="background-color: bisque;" class="button" onclick="
+      currentDisplay=currentDisplay+'+';
+      document.querySelector('#display').value = currentDisplay;
+      ">➕</button>
+
+      <button style="background-color: beige; font-size: larger;" class="button" onclick="
+      currentDisplay=currentDisplay+'1';
+      document.querySelector('#display').value = currentDisplay;
+      ">1</button>
+
+      <button style="background-color: beige; font-size: larger;" class="button" onclick="
+      currentDisplay=currentDisplay+'2';
+      document.querySelector('#display').value = currentDisplay;
+      ">2</button>
+
+      <button style="background-color: beige; font-size: larger;" class="button" onclick="
+      currentDisplay=currentDisplay+'3';
+      document.querySelector('#display').value = currentDisplay;
+      ">3</button>
+
+      <button style="background-color: rgb(33, 159, 237); font-size: x-large;" class="button" onclick="
+        currentDisplay='';
+       document.querySelector('#display').value = currentDisplay;
+        ">C</button>
+
+      
+      <button style="background-color: bisque;" class="button" onclick="
+      currentDisplay=currentDisplay+'-';
+      document.querySelector('#display').value = currentDisplay;
+      ">➖</button>
+
+      <button style="background-color: beige; font-size: larger;" class="button" onclick="
+      currentDisplay=currentDisplay+'4';
+      document.querySelector('#display').value = currentDisplay;
+      ">4</button>
+
+      <button style="background-color: beige; font-size: larger;" class="button" onclick="
+      currentDisplay=currentDisplay+'5';
+      document.querySelector('#display').value = currentDisplay;
+      ">5</button>
+
+      <button style="background-color: beige; font-size: larger;" class="button" onclick="
+      currentDisplay=currentDisplay+'6';
+      document.querySelector('#display').value = currentDisplay;
+      ">6</button>
+
+      <button style="background-color: bisque; color: blueviolet;" class="button" onclick="
+      currentDisplay += 'log';
+      document.querySelector('#display').value = currentDisplay;
+      ">LOG10</button>
+
+      <button style="background-color: bisque;" class="button" onclick="
+      currentDisplay=currentDisplay+'*';
+      document.querySelector('#display').value = currentDisplay;
+      ">✖️</button>
+
+      <button style="background-color: beige; font-size: larger;" class="button" onclick="
+      currentDisplay=currentDisplay+'7';
+      document.querySelector('#display').value = currentDisplay;
+      ">7</button>
+
+      <button style="background-color: beige; font-size: larger;" class="button" onclick="
+      currentDisplay=currentDisplay+'8';
+      document.querySelector('#display').value = currentDisplay;
+      ">8</button>
+
+      <button style="background-color: beige; font-size: larger;" class="button" onclick="
+      currentDisplay=currentDisplay+'9';
+      document.querySelector('#display').value = currentDisplay;
+      ">9</button>
+
+      <button style="background-color: bisque; color: blueviolet; font-size: larger;" class="button" onclick="
+      currentDisplay=currentDisplay+'%';
+      document.querySelector('#display').value = currentDisplay;
+      ">%</button>
+
+      <button style="background-color: bisque;" class="button" onclick="
+      currentDisplay=currentDisplay+'/';
+      document.querySelector('#display').value = currentDisplay;
+      ">➗</button>
+
+      
+      <button style="background-color: beige; font-size: larger;" class="button" onclick="
+      currentDisplay=currentDisplay+'.';
+      document.querySelector('#display').value = currentDisplay;
+      ">.</button>
+
+      <button style="background-color: beige; font-size: larger;" class="button" onclick="
+      currentDisplay=currentDisplay+'0';
+      document.querySelector('#display').value = currentDisplay;
+      ">0</button>
+
+
+      <button  style="background-color: bisque; color: blueviolet;" class="button" onclick="
+      currentDisplay=currentDisplay+'ln';
+      document.querySelector('#display').value = currentDisplay;
+      ">ln</button>
+
+      <button style="background-color: bisque; color: blueviolet;" class="button" onclick="
+      currentDisplay=currentDisplay+'^';
+      document.querySelector('#display').value = currentDisplay;
+      ">pow</button>
+
+      <button style="margin-bottom: 10px;
+      background-color: aquamarine;" class="eqbutton" onclick="
+      let expression = parseExpression(currentDisplay);
+      let result = eval(expression);
+      currentDisplay=result.toString();
+      document.querySelector('#display').value = currentDisplay;
+      ">=</button>
+
+    </div>
+  </div>
+
+  <script>
+    let currentDisplay='';
+    document.querySelector('#display').value = currentDisplay;
+
+
+  function parseExpression(expr) {
+    return expr
+      // Replace ^ with ** for power
+      .replace(/(\d+)\^(\d+)/g, 'Math.pow($1,$2)')
+
+      // Replace logN with Math.log10(N)
+      .replace(/log(\d+(\.\d+)?)/g, 'Math.log10($1)')
+
+      // Replace lnN with Math.log(N)
+      .replace(/ln(\d+(\.\d+)?)/g, 'Math.log($1)')
+
+      // Replace sqrtN with Math.sqrt(N)
+      .replace(/sqrt(\d+(\.\d+)?)/g, 'Math.sqrt($1)')
+
+      // Add * if number is directly before function (e.g. 3log4 → 3*Math.log10(4))
+      .replace(/(\d)(Math\.)/g, '$1*$2');
+  }
+
+
+  </script>
+</body>
+</html>
