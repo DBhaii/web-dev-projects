@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="todo.css">
+    <title>TODO LIST</title>
+</head>
+<body id="mainbody">
+    <h1 id="main-heading">TODO LIST</h1>
+
+    <div class="grid-container">
+        <input id="todo-input" type="text" placeholder="What to do?">
+
+        <input id="todo-date" type="date">
+
+        <button style="
+        height: 35px;
+        border-radius: 10px;
+        background-color: darkred;
+        color: antiquewhite;
+        font-size: larger;
+        " onclick="addTodo();">ADD</button>
+
+    </div>
+
+    <div class="todo-container grid-container"></div> 
+
+    <script src="todo.js"></script>
+</body>
+</html>
